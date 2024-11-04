@@ -1,0 +1,29 @@
+{
+    "Nome": "Mario Rossi",
+    "Cognome": "Rossi",
+    "Data di Nascita": "1993-05-15",
+    "Email": "mario.rossi@example.com",
+    "Telefono": "1234567890",
+    "Esperienze": [
+        {
+            "Titolo": "Sviluppatore Web",
+            "Azienda": "Azienda X",
+            "Data": "2020 - Presente",
+            "Descrizione": "Sviluppo di applicazioni web utilizzando JavaScript e Node.js."
+        },
+        {
+            "Titolo": "Web Designer",
+            "Azienda": "Azienda Y",
+            "Data": "2018 - 2020",
+            "Descrizione": "Progettazione di interfacce utente e esperienza utente."
+        }
+    ],
+    "Istruzione": [
+        {
+            "Titolo": "Laurea in Informatica",
+            "Università": "Università di Roma",
+            "Anno": "2018"
+        }
+    ],
+    "Competenze": ["JavaScript", "HTML", "CSS", "Node.js"]
+}

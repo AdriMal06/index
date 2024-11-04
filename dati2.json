@@ -1,0 +1,29 @@
+[
+    {
+        "Nome": "Mario",
+        "Cognome": "Rossi",
+        "Eta": 30,
+        "Indirizzo": "Via Roma 1",
+        "Citta": "Roma",
+        "Telefono": "1234567890",
+        "Immagine": ""
+    },
+    {
+        "Nome": "Giulia",
+        "Cognome": "Bianchi",
+        "Eta": 25,
+        "Indirizzo": "Via Milano 2",
+        "Citta": "Milano",
+        "Telefono": "0987654321",
+        "Immagine": ""
+    },
+    {
+        "Nome": "Luca",
+        "Cognome": "Verdi",
+        "Eta": 28,
+        "Indirizzo": "Via Napoli 3",
+        "Citta": "Napoli",
+        "Telefono": "1112223333",
+        "Immagine": ""
+    }
+]
