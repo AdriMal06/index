@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Stampa</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+        table{
+            border: 1px, solid, black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <table>
+        <thead>
+            <tr>
+                <td>Nome</td>
+                <td>Cognome</td>
+                <td>Età</td>
+            </tr>
+        </thead>
+        <tbody id="dati">
+        </tbody>
+    </table>
+    <script>
+        var s=localStorage.getItem("x")
+        var obj=JSON.parse(s)
+        var r=document.createElement("tr")
+        r.innerHTML="<td>"+obj.Nome+"</td><td>"+obj.Cognome+"</td><td>"+obj.Eta+"</td>"
+        document.getElementById("dati").appendChild(r)
+    </script>
+    </center>
+</body>
+</html>

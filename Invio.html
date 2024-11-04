@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Invio</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+        input{
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function f(){
+            var nome=document.getElementById("nome").value;
+            var cognome=document.getElementById("cognome").value;
+            var eta=document.getElementById("eta").value;
+            var obj={
+                Nome: nome,
+                Cognome: cognome,
+                Eta: eta
+            }
+            var s=JSON.stringify(obj)
+            localStorage.setItem("x", s)
+            document.location.href="Stampa.html"
+
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Inserisci i tuoi dati:</h1><br>
+        Nome: <input type="text" id="nome"><br>
+        Cognome: <input type="text" id="cognome"><br>
+        Età: <input type="number" id="eta"><br>
+        <button onclick="f()">Invio</button>
+    </center>
+</body>
+</html>
