@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Invia i tuoi dati</h1>
+<form>
+    <p>Nome:</p>
+    <input type="text" id="nome" required>
+    <p>Cognome:</p>
+    <input type="text" id="cognome" required>
+    <p>Età:</p>
+    <input type="number" id="eta" required>
+    <button type="submit" onclick="invia()">Invia</button>
+</form>
+<script>
+    function invia() {
+        var nome=document.getElementById('nome').value;
+        var cognome=document.getElementById('cognome').value;
+        var eta=document.getElementById('eta').value;
+	var data={nome, cognome, eta};
+        var jsonData=JSON.stringify(data);
+        localStorage.setItem('data', x);
+        window.location.href='receiver.html';
+    }
+</script>
+</body>
+</html>

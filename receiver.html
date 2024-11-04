@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Dati ricevuti</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Età</th>
+        </tr>
+    </thead>
+    <tbody id="tBody">
+    </tbody>
+</table>
+
+<script>
+    var jsonData=localStorage.getItem('x');
+    var data=JSON.parse(jsonData);
+    var tbody=document.getElementById('tBody');
+    var riga=document.createElement('tr');
+    riga.innerHTML='<td>' + userData.nome + '</td>' +
+                  '<td>' + userData.cognome + '</td>' +
+                  '<td>' + userData.eta + '</td>';
+    tbody.appendChild(riga);
+</script>
+</body>
+</html>
