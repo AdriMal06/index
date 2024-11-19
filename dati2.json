@@ -6,7 +6,7 @@
         "Indirizzo": "Via Roma 1",
         "Citta": "Roma",
         "Telefono": "1234567890",
-        "Immagine": ""
+        "Immagine": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvnMUkQYBezWH59O_61qXAhQ909TRCkiGh2IBAt-WyhMT0_2_5W03Vx9PpCSaZAMXbN1U&usqp=CAU"
     },
     {
         "Nome": "Giulia",
@@ -15,7 +15,7 @@
         "Indirizzo": "Via Milano 2",
         "Citta": "Milano",
         "Telefono": "0987654321",
-        "Immagine": ""
+        "Immagine": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThzxrQy3ZPAJqRwneLJNX2rL-UWEGB2j_4F_wVMyUn-HHh8Hf5J1tZApZo0WGblyOT0gs&usqp=CAU"
     },
     {
         "Nome": "Luca",
@@ -24,6 +24,6 @@
         "Indirizzo": "Via Napoli 3",
         "Citta": "Napoli",
         "Telefono": "1112223333",
-        "Immagine": ""
+        "Immagine": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqcVXIgWCvTbb55lDj91N_g2rd0F3rma21CA&s"
     }
 ]
