@@ -1,0 +1,41 @@
+{
+    "Nome": "Mario Rossi",
+    "Cognome": "Rossi",
+    "Eta": 30,
+    "Formazione": [
+      {
+        "Titolo": "Laurea in Informatica",
+        "Istituto": "Università degli Studi di Milano",
+        "Anno": 2016
+      },
+      {
+        "Titolo": "Master in Sviluppo Software",
+        "Istituto": "Politecnico di Milano",
+        "Anno": 2018
+      }
+    ],
+    "Esperienza": [
+      {
+        "Ruolo": "Sviluppatore Web",
+        "Azienda": "Tech Solutions",
+        "Periodo": "2016-2019",
+        "Descrizione": "Sviluppo e mantenimento di piattaforme web per clienti aziendali."
+      },
+      {
+        "Ruolo": "Software Engineer",
+        "Azienda": "Innovatech",
+        "Periodo": "2019-Presente",
+        "Descrizione": "Sviluppo di soluzioni software personalizzate per il settore finanziario."
+      }
+    ],
+    "Competenze": [
+      "Linguaggi di programmazione: JavaScript, Python, Java",
+      "Framework: React, Node.js",
+      "Database: MongoDB, MySQL",
+      "Sistemi di versionamento: Git"
+    ],
+    "Lingue": [
+      "Italiano: Madrelingua",
+      "Inglese: Fluente"
+    ]
+  }

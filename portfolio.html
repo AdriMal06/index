@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    .list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .list li {
+      margin-bottom: 5px;
+    }
+    .label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Portfolio</h1>
+  <div id="portfolioContent"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+
+    if (file) {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", file, true);
+      xhr.onload = function () {
+        if (this.status === 200) {
+          const portfolio = JSON.parse(this.responseText);
+          const content = document.getElementById("portfolioContent");
+
+          // Progetti
+          const sectionProjects = document.createElement("div");
+          sectionProjects.classList.add("section");
+          const titleProjects = document.createElement("h2");
+          titleProjects.textContent = "Progetti";
+          sectionProjects.appendChild(titleProjects);
+          const ulProjects = document.createElement("ul");
+          for (let i = 0; i < portfolio.Progetti.length; i++) {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="label">${portfolio.Progetti[i].Nome}</span> - ${portfolio.Progetti[i].Descrizione}`;
+            ulProjects.appendChild(li);
+          }
+          sectionProjects.appendChild(ulProjects);
+          content.appendChild(sectionProjects);
+
+          // Contatti
+          const sectionContacts = document.createElement("div");
+          sectionContacts.classList.add("section");
+          const titleContacts = document.createElement("h2");
+          titleContacts.textContent = "Contatti";
+          sectionContacts.appendChild(titleContacts);
+          const ulContacts = document.createElement("ul");
+          for (let i = 0; i < portfolio.Contatti.length; i++) {
+            const li = document.createElement("li");
+            li.textContent = portfolio.Contatti[i];
+            ulContacts.appendChild(li);
+          }
+          sectionContacts.appendChild(ulContacts);
+          content.appendChild(sectionContacts);
+        }
+      };
+      xhr.onerror = function () {
+        console.error("Errore durante il caricamento del portfolio.");
+      };
+      xhr.send();
+    } else {
+      document.getElementById("portfolioContent").innerHTML = "<p>Impossibile caricare il portfolio.</p>";
+    }
+  </script>
+</body>
+</html>

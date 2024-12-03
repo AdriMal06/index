@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anagrafica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+    .portfolio-icon {
+      text-align: center;
+    }
+    .portfolio-icon a {
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anagrafica</h1>
+  <table id="anagraficaTable">
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Età</th>
+        <th>Indirizzo</th>
+        <th>Città</th>
+        <th>Telefono</th>
+        <th>Portfolio</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "anagrafica.json", true);
+    xhr.onload = function () {
+      if (this.status === 200) {
+        const data = JSON.parse(this.responseText);
+        const table = document.getElementById("anagraficaTable");
+        const tableBody = table.getElementsByTagName("tbody")[0];
+
+        const row = document.createElement("tr");
+
+        // Foto
+        const cellFoto = document.createElement("td");
+        const img = document.createElement("img");
+        img.src = data.Foto;
+        img.alt = data.Nome + " " + data.Cognome;
+        cellFoto.appendChild(img);
+        row.appendChild(cellFoto);
+
+        // Nome
+        const cellNome = document.createElement("td");
+        cellNome.textContent = data.Nome;
+        row.appendChild(cellNome);
+
+        // Cognome
+        const cellCognome = document.createElement("td");
+        cellCognome.textContent = data.Cognome;
+        row.appendChild(cellCognome);
+
+        // Età
+        const cellEta = document.createElement("td");
+        cellEta.textContent = data.Eta;
+        row.appendChild(cellEta);
+
+        // Indirizzo
+        const cellIndirizzo = document.createElement("td");
+        cellIndirizzo.textContent = data.Indirizzo;
+        row.appendChild(cellIndirizzo);
+
+        // Città
+        const cellCitta = document.createElement("td");
+        cellCitta.textContent = data.Citta;
+        row.appendChild(cellCitta);
+
+        // Telefono
+        const cellTelefono = document.createElement("td");
+        const ulTelefono = document.createElement("ul");
+        for (let i = 0; i < data.Telefono.length; i++) {
+          const li = document.createElement("li");
+          li.textContent = data.Telefono[i].tipo + ": " + data.Telefono[i].numero;
+          ulTelefono.appendChild(li);
+        }
+        cellTelefono.appendChild(ulTelefono);
+        row.appendChild(cellTelefono);
+
+        // Portfolio
+        const cellPortfolio = document.createElement("td");
+        const linkPortfolio = document.createElement("a");
+        linkPortfolio.href = `portfolio.html?file=portfolio.json`;
+        linkPortfolio.textContent = "Visualizza Portfolio";
+        linkPortfolio.style.textAlign = "center"; // Stile manuale invece di classe
+        linkPortfolio.style.color = "blue"; // Stile manuale invece di classe
+        cellPortfolio.appendChild(linkPortfolio);
+        row.appendChild(cellPortfolio);
+
+        tableBody.appendChild(row);
+      }
+    };
+    xhr.onerror = function () {
+      console.error("Errore durante il caricamento dei dati dell'anagrafica.");
+    };
+    xhr.send();
+  </script>
+</body>
+</html>

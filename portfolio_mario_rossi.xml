@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portfolio>
+  <lavoro>
+    <titolo>Sviluppo Piattaforma E-commerce</titolo>
+    <descrizione>Sviluppo di una piattaforma e-commerce completa per la vendita di prodotti online, inclusi il sistema di gestione ordini e pagamenti.</descrizione>
+    <link>https://www.example.com/ecommerce</link>
+  </lavoro>
+  <lavoro>
+    <titolo>Applicazione Mobile Finanze Personali</titolo>
+    <descrizione>Creazione di un'applicazione mobile per la gestione delle finanze personali, che consente di monitorare spese e budget mensili.</descrizione>
+    <link>https://www.example.com/app</link>
+  </lavoro>
+  <lavoro>
+    <titolo>Redesign Sito Web Aziendale</titolo>
+    <descrizione>Redesign completo del sito web aziendale, con focus sull'ottimizzazione per dispositivi mobili e miglioramento dell'esperienza utente (UX).</descrizione>
+    <link>https://www.example.com/redesign</link>
+  </lavoro>
+</portfolio>

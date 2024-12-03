@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    .list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .list li {
+      margin-bottom: 5px;
+    }
+    .label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Curriculum Vitae</h1>
+  <div id="cvContent"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+
+    if (file) {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", file, true);
+      xhr.onload = function () {
+        if (this.status === 200) {
+          const cv = JSON.parse(this.responseText);
+          const content = document.getElementById("cvContent");
+
+          // Informazioni personali
+          const sectionInfo = document.createElement("div");
+          sectionInfo.classList.add("section");
+          const titleInfo = document.createElement("h2");
+          titleInfo.textContent = "Informazioni Personali";
+          sectionInfo.appendChild(titleInfo);
+          const namePara = document.createElement("p");
+          namePara.innerHTML = `<span class="label">Nome:</span> ${cv.Nome} ${cv.Cognome}`;
+          sectionInfo.appendChild(namePara);
+          const agePara = document.createElement("p");
+          agePara.innerHTML = `<span class="label">Età:</span> ${cv.Eta} anni`;
+          sectionInfo.appendChild(agePara);
+          content.appendChild(sectionInfo);
+
+          // Formazione
+          const sectionForm = document.createElement("div");
+          sectionForm.classList.add("section");
+          const titleForm = document.createElement("h2");
+          titleForm.textContent = "Formazione";
+          sectionForm.appendChild(titleForm);
+          const ulForm = document.createElement("ul");
+          for (let i = 0; i < cv.Formazione.length; i++) {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="label">${cv.Formazione[i].Titolo}</span>, ${cv.Formazione[i].Istituto} (${cv.Formazione[i].Anno})`;
+            ulForm.appendChild(li);
+          }
+          sectionForm.appendChild(ulForm);
+          content.appendChild(sectionForm);
+
+          // Esperienza
+          const sectionExp = document.createElement("div");
+          sectionExp.classList.add("section");
+          const titleExp = document.createElement("h2");
+          titleExp.textContent = "Esperienza Professionale";
+          sectionExp.appendChild(titleExp);
+          const ulExp = document.createElement("ul");
+          for (let i = 0; i < cv.Esperienza.length; i++) {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="label">${cv.Esperienza[i].Ruolo}</span> presso ${cv.Esperienza[i].Azienda} (${cv.Esperienza[i].Periodo}): ${cv.Esperienza[i].Descrizione}`;
+            ulExp.appendChild(li);
+          }
+          sectionExp.appendChild(ulExp);
+          content.appendChild(sectionExp);
+
+          // Competenze
+          const sectionSkills = document.createElement("div");
+          sectionSkills.classList.add("section");
+          const titleSkills = document.createElement("h2");
+          titleSkills.textContent = "Competenze";
+          sectionSkills.appendChild(titleSkills);
+          const ulSkills = document.createElement("ul");
+          for (let i = 0; i < cv.Competenze.length; i++) {
+            const li = document.createElement("li");
+            li.textContent = cv.Competenze[i];
+            ulSkills.appendChild(li);
+          }
+          sectionSkills.appendChild(ulSkills);
+          content.appendChild(sectionSkills);
+
+          // Lingue
+          const sectionLang = document.createElement("div");
+          sectionLang.classList.add("section");
+          const titleLang = document.createElement("h2");
+          titleLang.textContent = "Lingue";
+          sectionLang.appendChild(titleLang);
+          const ulLang = document.createElement("ul");
+          for (let i = 0; i < cv.Lingue.length; i++) {
+            const li = document.createElement("li");
+            li.textContent = cv.Lingue[i];
+            ulLang.appendChild(li);
+          }
+          sectionLang.appendChild(ulLang);
+          content.appendChild(sectionLang);
+        }
+      };
+      xhr.onerror = function () {
+        console.error("Errore durante il caricamento del CV.");
+      };
+      xhr.send();
+    } else {
+      document.getElementById("cvContent").innerHTML = "<p>Impossibile caricare il CV.</p>";
+    }
+  </script>
+</body>
+</html>
