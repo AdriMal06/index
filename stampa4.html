@@ -40,7 +40,7 @@
 </head>
 <body>
   <h1>Anagrafica</h1>
-  <table id="anagraficaTable">
+  <table id="anagraficaTabella">
     <thead>
       <tr>
         <th>Foto</th>
@@ -57,71 +57,53 @@
   </table>
 
   <script>
-    const xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("GET", "anagrafica4.json", true);
     xhr.onload = function () {
       if (this.status === 200) {
-        const data = JSON.parse(this.responseText);
-        const table = document.getElementById("anagraficaTable");
-        const tableBody = table.getElementsByTagName("tbody")[0];
-
-        const row = document.createElement("tr");
-
-        // Foto
-        const cellFoto = document.createElement("td");
-        const img = document.createElement("img");
+        var data = JSON.parse(this.responseText);
+        var table = document.getElementById("anagraficaTabella");
+        var tBody = table.getElementsByTagName("tbody")[0];
+        var riga = document.createElement("tr");
+        var cellFoto = document.createElement("td");
+        var img = document.createElement("img");
         img.src = data.Foto;
         img.alt = data.Nome + " " + data.Cognome;
         cellFoto.appendChild(img);
-        row.appendChild(cellFoto);
-
-        // Nome
-        const cellNome = document.createElement("td");
+        riga.appendChild(cellFoto);
+        var cellNome = document.createElement("td");
         cellNome.textContent = data.Nome;
-        row.appendChild(cellNome);
-
-        // Cognome
-        const cellCognome = document.createElement("td");
+        riga.appendChild(cellNome);
+        var cellCognome = document.createElement("td");
         cellCognome.textContent = data.Cognome;
-        row.appendChild(cellCognome);
-
-        // Età
-        const cellEta = document.createElement("td");
+        riga.appendChild(cellCognome);
+        var cellEta = document.createElement("td");
         cellEta.textContent = data.Eta;
-        row.appendChild(cellEta);
-
-        // Indirizzo
-        const cellIndirizzo = document.createElement("td");
+        riga.appendChild(cellEta);
+        var cellIndirizzo = document.createElement("td");
         cellIndirizzo.textContent = data.Indirizzo;
-        row.appendChild(cellIndirizzo);
-
-        // Città
-        const cellCitta = document.createElement("td");
+        riga.appendChild(cellIndirizzo);
+        var cellCitta = document.createElement("td");
         cellCitta.textContent = data.Citta;
-        row.appendChild(cellCitta);
-
-        // Telefono
-        const cellTelefono = document.createElement("td");
-        const ulTelefono = document.createElement("ul");
+        riga.appendChild(cellCitta);
+        var cellTelefono = document.createElement("td");
+        var ulTelefono = document.createElement("ul");
         for (let i = 0; i < data.Telefono.length; i++) {
-          const li = document.createElement("li");
+          var li = document.createElement("li");
           li.textContent = data.Telefono[i].tipo + ": " + data.Telefono[i].numero;
           ulTelefono.appendChild(li);
         }
         cellTelefono.appendChild(ulTelefono);
-        row.appendChild(cellTelefono);
-
-        // Portfolio
-        const cellPortfolio = document.createElement("td");
-        const linkPortfolio = document.createElement("a");
+        riga.appendChild(cellTelefono);
+        var cellPortfolio = document.createElement("td");
+        var linkPortfolio = document.createElement("a");
         linkPortfolio.href = `portfolio.html?file=portfolio.json`;
         linkPortfolio.textContent = "Visualizza Portfolio";
-        linkPortfolio.style.textAlign = "center"; // Stile manuale invece di classe
-        linkPortfolio.style.color = "blue"; // Stile manuale invece di classe
+        linkPortfolio.style.textAlign = "center";
+        linkPortfolio.style.color = "blue";
         cellPortfolio.appendChild(linkPortfolio);
-        row.appendChild(cellPortfolio);
-
-        tableBody.appendChild(row);
+        riga.appendChild(cellPortfolio);
+        tBody.appendChild(riga);
       }
     };
     xhr.onerror = function () {
