@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anagrafica</title>
   <style>
     body {
@@ -55,59 +53,55 @@
     </thead>
     <tbody></tbody>
   </table>
-
   <script>
-    var xhr = new XMLHttpRequest();
+    var xhr=new XMLHttpRequest();
     xhr.open("GET", "anagrafica4.json", true);
-    xhr.onload = function () {
-      if (this.status === 200) {
-        var data = JSON.parse(this.responseText);
-        var table = document.getElementById("anagraficaTabella");
-        var tBody = table.getElementsByTagName("tbody")[0];
-        var riga = document.createElement("tr");
-        var cellFoto = document.createElement("td");
-        var img = document.createElement("img");
-        img.src = data.Foto;
-        img.alt = data.Nome + " " + data.Cognome;
+    xhr.onload=function () {
+      if (this.status==200) {
+        var data=JSON.parse(this.responseText);
+        var table=document.getElementById("anagraficaTabella");
+        var tBody=table.getElementsByTagName("tbody")[0];
+        var riga=document.createElement("tr");
+        var cellFoto=document.createElement("td");
+        var img=document.createElement("img");
+        img.src=data.Foto;
+        img.alt=data.Nome+" "+data.Cognome;
         cellFoto.appendChild(img);
         riga.appendChild(cellFoto);
-        var cellNome = document.createElement("td");
-        cellNome.textContent = data.Nome;
+        var cellNome=document.createElement("td");
+        cellNome.textContent=data.Nome;
         riga.appendChild(cellNome);
-        var cellCognome = document.createElement("td");
-        cellCognome.textContent = data.Cognome;
+        var cellCognome=document.createElement("td");
+        cellCognome.textContent=data.Cognome;
         riga.appendChild(cellCognome);
-        var cellEta = document.createElement("td");
-        cellEta.textContent = data.Eta;
+        var cellEta=document.createElement("td");
+        cellEta.textContent=data.Eta;
         riga.appendChild(cellEta);
-        var cellIndirizzo = document.createElement("td");
-        cellIndirizzo.textContent = data.Indirizzo;
+        var cellIndirizzo=document.createElement("td");
+        cellIndirizzo.textContent=data.Indirizzo;
         riga.appendChild(cellIndirizzo);
-        var cellCitta = document.createElement("td");
-        cellCitta.textContent = data.Citta;
+        var cellCitta=document.createElement("td");
+        cellCitta.textContent=data.Citta;
         riga.appendChild(cellCitta);
-        var cellTelefono = document.createElement("td");
-        var ulTelefono = document.createElement("ul");
-        for (let i = 0; i < data.Telefono.length; i++) {
-          var li = document.createElement("li");
-          li.textContent = data.Telefono[i].tipo + ": " + data.Telefono[i].numero;
+        var cellTelefono=document.createElement("td");
+        var ulTelefono=document.createElement("ul");
+        for (var i= 0; i<data.Telefono.length; i++) {
+          var li=document.createElement("li");
+          li.textContent=data.Telefono[i].tipo+": "+data.Telefono[i].numero;
           ulTelefono.appendChild(li);
         }
         cellTelefono.appendChild(ulTelefono);
         riga.appendChild(cellTelefono);
-        var cellPortfolio = document.createElement("td");
-        var linkPortfolio = document.createElement("a");
-        linkPortfolio.href = "portfolio.html";
-        linkPortfolio.textContent = "Visualizza Portfolio";
-        linkPortfolio.style.textAlign = "center";
-        linkPortfolio.style.color = "blue";
+        var cellPortfolio=document.createElement("td");
+        var linkPortfolio=document.createElement("a");
+        linkPortfolio.href="portfolio.html";
+        linkPortfolio.textContent="Visualizza Portfolio";
+        linkPortfolio.style.textAlign="center";
+        linkPortfolio.style.color="blue";
         cellPortfolio.appendChild(linkPortfolio);
         riga.appendChild(cellPortfolio);
         tBody.appendChild(riga);
       }
-    };
-    xhr.onerror = function () {
-      console.error("Errore durante il caricamento dei dati dell'anagrafica.");
     };
     xhr.send();
   </script>
