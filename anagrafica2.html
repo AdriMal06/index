@@ -55,14 +55,14 @@
                 var persona=anagrafica[i];
                 var riga=`
                     <tr>
-                        <td><img src="${persona.Immagine}" alt="${persona.Nome} ${persona.Cognome}"></td>
+                        <td><img src="${persona.Immagine}"></td>
                         <td>${persona.Nome}</td>
                         <td>${persona.Cognome}</td>
                         <td>${persona.Eta}</td>
                         <td>${persona.Indirizzo}</td>
                         <td>${persona.Citta}</td>
                         <td>${persona.Telefono}</td>
-                        <td><a href="cv.json" target="_blank">Visualizza CV</a></td>
+                        <td><a href="cv.json">Visualizza CV</a></td>
                     </tr>
                 `;
                 tbody.innerHTML+=riga;
