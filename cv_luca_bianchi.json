@@ -1,36 +1,17 @@
 {
+    "Foto": "img1.jpg",
     "Nome": "Luca Bianchi",
-    "Cognome": "Bianchi",
-    "Eta": 25,
-    "Formazione": [
-      {
-        "Titolo": "Laurea in Ingegneria Informatica",
-        "Istituto": "Politecnico di Torino",
-        "Anno": 2020
-      }
-    ],
-    "Esperienza": [
-      {
-        "Ruolo": "Junior Developer",
-        "Azienda": "CodeCrafters",
-        "Periodo": "2020-2022",
-        "Descrizione": "Sviluppo di applicazioni web e mobile per piccole e medie imprese."
-      },
-      {
-        "Ruolo": "Sviluppatore Backend",
-        "Azienda": "DevTech",
-        "Periodo": "2022-Presente",
-        "Descrizione": "Progettazione e implementazione di soluzioni backend scalabili per grandi piattaforme."
-      }
-    ],
-    "Competenze": [
-      "Linguaggi di programmazione: Java, C#, Ruby",
-      "Framework: Angular, Django",
-      "Database: PostgreSQL, Oracle",
-      "Sistemi di versionamento: Git"
-    ],
-    "Lingue": [
-      "Italiano: Madrelingua",
-      "Inglese: Intermedio"
-    ]
+    "Nascita": "05/03/2006",
+    "Via": "Via Ciao 12",
+    "Citta": "Milano",
+    "Cap": 20003,
+    "Nazione": "Italia",
+    "Email": "lucabianchi@gmail.com",
+    "Telefono": 23456789,
+    "Universita": "No",
+    "Superiori": "Si",
+    "Titolo": "Diploma",
+    "Competenze": "Nessuna",
+    "Lingua": "italiano",
+    "Hobby": "calcio"
   }
