@@ -63,10 +63,10 @@
               for (var i = 0; i < obj.length; i++) {
                   var tr = document.createElement("tr");
                   var per = obj[i];
-                  var pr = ["nome", "cognome", "eta", "indirizzo", "citta", "tel", "link","port"];
+                  var pr = ["Nome", "Cognome", "Eta", "Indirizzo", "Citta", "Telefono", "link","port"];
                   for (var j = 0; j < pr.length; j++) {
                       var td = document.createElement("td");
-                      if (pr[j] == "tel") {
+                      if (pr[j] == "Telefono") {
                           var t = "";
                           if (per.tel.cel) t += "cel:" + per.Telefono.cellulare + "<br>";
                           if (per.tel.casa) t += "casa:" + per.Telefono.casa + "<br>";
