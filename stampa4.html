@@ -55,7 +55,6 @@
   <script>
       var x = new XMLHttpRequest();
       x.open("GET", "anagrafica4.json", true);
-      x.send();
       x.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               var obj = JSON.parse(this.responseText);
@@ -102,6 +101,7 @@
               }
           }
       };
+      x.send();
   </script>
 </body>
 </html>
