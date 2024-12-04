@@ -5,23 +5,15 @@
     "Eta": 35,
     "Indirizzo": "Via Roma 10",
     "Citta": "Milano",
-    "Telefono": [
-      {
-        "tipo": "Casa",
-        "numero": "02-1234567"
-      },
-      {
-        "tipo": "Ufficio",
-        "numero": "02-7654321"
-      },
-      {
-        "tipo": "Cellulare",
-        "numero": "333-9876543"
-      }
-    ],
-    "Foto": "img1.jpg",
-    "CV": "cv_mario_rossi.json",
-    "Portfolio": "portfolio_mario_rossi.json"
+    "Telefono":{
+      "casa":1982765216,
+      "ufficio":716527326,
+      "cellulare":1526765345627
+    },
+    "link": "img1.jpg",
+    "port": "img1.jpg",
+    "cv": "cv_mario_rossi.json",
+    "prt": "portfolio_mario_rossi.xml"
   },
   {
     "Nome": "Luca",
@@ -29,22 +21,14 @@
     "Eta": 28,
     "Indirizzo": "Via Verdi 15",
     "Citta": "Roma",
-    "Telefono": [
-      {
-        "tipo": "Casa",
-        "numero": "06-7654321"
-      },
-      {
-        "tipo": "Ufficio",
-        "numero": "06-1234567"
-      },
-      {
-        "tipo": "Cellulare",
-        "numero": "334-9876543"
-      }
-    ],
-    "Foto": "img2.jpg",
-    "CV": "cv_luca_bianchi.json",
-    "Portfolio": "portfolio_luca_bianchi.json"
+    "Telefono":{
+      "casa":1982765216,
+      "ufficio":716527326,
+      "cellulare":1526765345627
+    },
+    "link": "img2.jpg",
+    "port": "img2.jpg",
+    "cv": "cv_luca_bianchi.json",
+    "prt": "portfolio_luca_bianchi.xml"
   }
 ]
