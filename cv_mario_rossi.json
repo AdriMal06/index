@@ -1,41 +1,17 @@
 {
+    "Foto": "img2.jpg",
     "Nome": "Mario Rossi",
-    "Cognome": "Rossi",
-    "Eta": 30,
-    "Formazione": [
-      {
-        "Titolo": "Laurea in Informatica",
-        "Istituto": "Università degli Studi di Milano",
-        "Anno": 2016
-      },
-      {
-        "Titolo": "Master in Sviluppo Software",
-        "Istituto": "Politecnico di Milano",
-        "Anno": 2018
-      }
-    ],
-    "Esperienza": [
-      {
-        "Ruolo": "Sviluppatore Web",
-        "Azienda": "Tech Solutions",
-        "Periodo": "2016-2019",
-        "Descrizione": "Sviluppo e mantenimento di piattaforme web per clienti aziendali."
-      },
-      {
-        "Ruolo": "Software Engineer",
-        "Azienda": "Innovatech",
-        "Periodo": "2019-Presente",
-        "Descrizione": "Sviluppo di soluzioni software personalizzate per il settore finanziario."
-      }
-    ],
-    "Competenze": [
-      "Linguaggi di programmazione: JavaScript, Python, Java",
-      "Framework: React, Node.js",
-      "Database: MongoDB, MySQL",
-      "Sistemi di versionamento: Git"
-    ],
-    "Lingue": [
-      "Italiano: Madrelingua",
-      "Inglese: Fluente"
-    ]
+    "Nascita": "05/03/2006",
+    "Via": "Via Ciao 12",
+    "Citta": "Milano",
+    "Cap": 20003,
+    "Nazione": "Italia",
+    "Email": "lucabianchi@gmail.com",
+    "Telefono": 23456789,
+    "Universita": "No",
+    "Superiori": "Si",
+    "Titolo": "Diploma",
+    "Competenze": "Nessuna",
+    "Lingua": "italiano",
+    "Hobby": "calcio"
   }
