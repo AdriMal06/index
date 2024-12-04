@@ -32,19 +32,18 @@
 </head>
 <body>
   <h1>Portfolio</h1>
-  <div id="portfolioContent"></div>
+  <div id="portfolio"></div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get("file");
-
-    if (file) {
+    const params=new URLSearchParams(window.location.search);
+    const file=params.get("file");
+    if(file){
       const xhr = new XMLHttpRequest();
       xhr.open("GET", file, true);
       xhr.onload = function () {
         if (this.status === 200) {
           const portfolio = JSON.parse(this.responseText);
-          const content = document.getElementById("portfolioContent");
+          const content = document.getElementById("portfolio");
 
           // Progetti
           const sectionProjects = document.createElement("div");
