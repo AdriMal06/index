@@ -102,7 +102,7 @@
                     portfolioIcon.style.cursor = "pointer";
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            localStorage.setItem("portfolioFile", data[index].Portfolio);
+                            localStorage.setItem("portfolioFile", data[index].port);
                             window.location.href = "portfolio.html"; 
                         };
                     }(i);
