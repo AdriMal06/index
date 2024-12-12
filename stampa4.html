@@ -39,69 +39,78 @@
   </style>
 </head>
 <body>
-  <table>
-      <tr id="mainline">
-          <td>NOME</td>
-          <td>COGNOME</td>
-          <td>ETA'</td>
-          <td>INDIRIZZO</td>
-          <td>CITTA'</td>
-          <td>TELEFONO</td>
-          <td>CV</td>
-          <td>PORTFOLIO</td>
-      </tr>
-      <tbody id="caricadati"></tbody>
-  </table>
-  <script>
-      var x = new XMLHttpRequest();
-      x.open("GET", "anagrafica4.json", true);
-      x.send();
-      x.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-              var obj = JSON.parse(this.responseText);
-              var tab = document.getElementById("caricadati");
-              for (var i = 0; i < obj.length; i++) {
-                  var tr = document.createElement("tr");
-                  var per = obj[i];
-                  var pr = ["Nome", "Cognome", "Eta", "Indirizzo", "Citta", "Telefono", "link","port"];
-                  for (var j = 0; j < pr.length; j++) {
-                      var td = document.createElement("td");
-                      if (pr[j] == "Telefono") {
-                          var t = "";
-                          if (per.tel.cel) t += "cel:" + per.Telefono.cellulare + "<br>";
-                          if (per.tel.casa) t += "casa:" + per.Telefono.casa + "<br>";
-                          if (per.tel.ufficio) t += "ufficio:" + per.Telefono.ufficio + "<br>";
-                          td.innerHTML = t;
-                      }
-                      else if (pr[j] == "link") {
-                          (function(person) {
-                              var link = document.createElement("img");
-                              link.src = person[pr[j]];
-                              link.style.width = "100px";
-                              link.style.height = "100px";
-                              link.onclick = function() { curriculum(person.cv); };
-                              td.appendChild(link);
-                          })(per);
-                      }
-                      else if(pr[j] == "port"){
-                          (function(person){
-                              var port=document.createElement("img");
-                              port.src=person[pr[j]];
-                              port.style.width= "100px";
-                              port.style.height = "100px";
-                              port.onclick=function(){portfolio(person.prt);};
-                              td.appendChild(port);
-                          })(per);
-                      }
-                      else {
-                          td.innerText = per[pr[j]];
-                      }
-                      tr.appendChild(td);
-                  }
-                  tab.appendChild(tr);
-              }
-          }
-      };
-  </script>
+  <h1>Anagrafica</h1>
+    <table id="anagraficaTable">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Numeri di Telefono</th>
+                <th>CV</th>
+                <th>Portfolio</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
+
+        xhr.open("GET", "tabella4.json", true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                
+                for (var i = 0; i < data.length; i++) {
+                    var row = table.insertRow();
+
+                    var cell1 = row.insertCell(0);
+                    var img = document.createElement("img");
+                    img.src = data[i].link;
+                    img.width = 50;
+                    img.height = 50;
+                    cell1.appendChild(img);
+
+                    row.insertCell(1).textContent = data[i].Nome;
+                    row.insertCell(2).textContent = data[i].Cognome;
+                    row.insertCell(3).textContent = data[i].Eta;
+                    row.insertCell(4).textContent = data[i].Indirizzo;
+                    row.insertCell(5).textContent = data[i].Citta;
+
+                    var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.cellulare}`;
+                    row.insertCell(6).textContent = phoneNumbers;
+                    
+                    var cvLink = document.createElement("a");
+                cvLink.textContent = "Visualizza CV";
+                cvLink.href = "cv.html";
+                cvLink.onclick = (function(index) {
+                    return function() {
+                        localStorage.setItem("cvFile", data[index].CV);
+                    };
+                })(i); 
+                row.insertCell(7).appendChild(cvLink);
+                    var portfolioIconCell = row.insertCell(8);
+                    var portfolioIcon = document.createElement("div");
+                    portfolioIcon.classList.add("portfolio-icon");
+                    portfolioIcon.textContent = "Visualizza Portfolio";  
+                    portfolioIcon.style.cursor = "pointer";
+                    portfolioIcon.onclick = function(index) {
+                        return function() {
+                            localStorage.setItem("portfolioFile", data[index].Portfolio);
+                            window.location.href = "portfolio.html"; 
+                        };
+                    }(i);
+                    portfolioIconCell.appendChild(portfolioIcon);
+                }
+            }
+        };
+        xhr.send();
+    </script>
 </body>
 </html>
