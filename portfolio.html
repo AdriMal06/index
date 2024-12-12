@@ -32,57 +32,37 @@
 </head>
 <body>
   <h1>Portfolio</h1>
-  <div id="portfolio"></div>
+    <div id="portfolio"></div>
 
-  <script>
-    const params=new URLSearchParams(window.location.search);
-    const file=params.get("file");
-    if(file){
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", file, true);
-      xhr.onload = function () {
-        if (this.status === 200) {
-          const portfolio = JSON.parse(this.responseText);
-          const content = document.getElementById("portfolio");
+    <script>
+        var portfolioFile = localStorage.getItem("portfolioFile");
 
-          // Progetti
-          const sectionProjects = document.createElement("div");
-          sectionProjects.classList.add("section");
-          const titleProjects = document.createElement("h2");
-          titleProjects.textContent = "Progetti";
-          sectionProjects.appendChild(titleProjects);
-          const ulProjects = document.createElement("ul");
-          for (let i = 0; i < portfolio.Progetti.length; i++) {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="label">${portfolio.Progetti[i].Nome}</span> - ${portfolio.Progetti[i].Descrizione}`;
-            ulProjects.appendChild(li);
-          }
-          sectionProjects.appendChild(ulProjects);
-          content.appendChild(sectionProjects);
+        if (portfolioFile) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", portfolioFile, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var lavori = xmlDoc.getElementsByTagName("lavoro");
+                    var container = document.getElementById("portfolio");
 
-          // Contatti
-          const sectionContacts = document.createElement("div");
-          sectionContacts.classList.add("section");
-          const titleContacts = document.createElement("h2");
-          titleContacts.textContent = "Contatti";
-          sectionContacts.appendChild(titleContacts);
-          const ulContacts = document.createElement("ul");
-          for (let i = 0; i < portfolio.Contatti.length; i++) {
-            const li = document.createElement("li");
-            li.textContent = portfolio.Contatti[i];
-            ulContacts.appendChild(li);
-          }
-          sectionContacts.appendChild(ulContacts);
-          content.appendChild(sectionContacts);
+                    for (var i = 0; i < lavori.length; i++) {
+                        var titolo = lavori[i].getElementsByTagName("titolo")[0].textContent;
+                        var descrizione = lavori[i].getElementsByTagName("descrizione")[0].textContent;
+                        var link = lavori[i].getElementsByTagName("link")[0].textContent;
+
+                        var div = document.createElement("div");
+                        div.innerHTML = `<h2>${titolo}</h2><p>${descrizione}</p><a href="${link}" target="_blank">link sito</a>`;
+                        container.appendChild(div);
+                    }
+                } else {
+                    document.getElementById("portfolio").innerHTML = "Nessun portfolio trovato.";
+                }
+            };
+            xhr.send();
+        } else {
+            document.getElementById("portfolio").innerHTML = "Nessun portfolio selezionato.";
         }
-      };
-      xhr.onerror = function () {
-        console.error("Errore durante il caricamento del portfolio.");
-      };
-      xhr.send();
-    } else {
-      document.getElementById("portfolioContent").innerHTML = "<p>Impossibile caricare il portfolio.</p>";
-    }
-  </script>
+    </script>
 </body>
 </html>
