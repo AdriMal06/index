@@ -31,103 +31,63 @@
   </style>
 </head>
 <body>
-  <h1>Curriculum Vitae</h1>
-  <div id="cvContent"></div>
+   <div class="cv-container">
+        <div id="cv-content">
+        </div>
+    </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get("file");
-
-    if (file) {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", file, true);
-      xhr.onload = function () {
-        if (this.status === 200) {
-          const cv = JSON.parse(this.responseText);
-          const content = document.getElementById("cvContent");
-
-          // Informazioni personali
-          const sectionInfo = document.createElement("div");
-          sectionInfo.classList.add("section");
-          const titleInfo = document.createElement("h2");
-          titleInfo.textContent = "Informazioni Personali";
-          sectionInfo.appendChild(titleInfo);
-          const namePara = document.createElement("p");
-          namePara.innerHTML = `<span class="label">Nome:</span> ${cv.Nome} ${cv.Cognome}`;
-          sectionInfo.appendChild(namePara);
-          const agePara = document.createElement("p");
-          agePara.innerHTML = `<span class="label">Età:</span> ${cv.Eta} anni`;
-          sectionInfo.appendChild(agePara);
-          content.appendChild(sectionInfo);
-
-          // Formazione
-          const sectionForm = document.createElement("div");
-          sectionForm.classList.add("section");
-          const titleForm = document.createElement("h2");
-          titleForm.textContent = "Formazione";
-          sectionForm.appendChild(titleForm);
-          const ulForm = document.createElement("ul");
-          for (let i = 0; i < cv.Formazione.length; i++) {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="label">${cv.Formazione[i].Titolo}</span>, ${cv.Formazione[i].Istituto} (${cv.Formazione[i].Anno})`;
-            ulForm.appendChild(li);
-          }
-          sectionForm.appendChild(ulForm);
-          content.appendChild(sectionForm);
-
-          // Esperienza
-          const sectionExp = document.createElement("div");
-          sectionExp.classList.add("section");
-          const titleExp = document.createElement("h2");
-          titleExp.textContent = "Esperienza Professionale";
-          sectionExp.appendChild(titleExp);
-          const ulExp = document.createElement("ul");
-          for (let i = 0; i < cv.Esperienza.length; i++) {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="label">${cv.Esperienza[i].Ruolo}</span> presso ${cv.Esperienza[i].Azienda} (${cv.Esperienza[i].Periodo}): ${cv.Esperienza[i].Descrizione}`;
-            ulExp.appendChild(li);
-          }
-          sectionExp.appendChild(ulExp);
-          content.appendChild(sectionExp);
-
-          // Competenze
-          const sectionSkills = document.createElement("div");
-          sectionSkills.classList.add("section");
-          const titleSkills = document.createElement("h2");
-          titleSkills.textContent = "Competenze";
-          sectionSkills.appendChild(titleSkills);
-          const ulSkills = document.createElement("ul");
-          for (let i = 0; i < cv.Competenze.length; i++) {
-            const li = document.createElement("li");
-            li.textContent = cv.Competenze[i];
-            ulSkills.appendChild(li);
-          }
-          sectionSkills.appendChild(ulSkills);
-          content.appendChild(sectionSkills);
-
-          // Lingue
-          const sectionLang = document.createElement("div");
-          sectionLang.classList.add("section");
-          const titleLang = document.createElement("h2");
-          titleLang.textContent = "Lingue";
-          sectionLang.appendChild(titleLang);
-          const ulLang = document.createElement("ul");
-          for (let i = 0; i < cv.Lingue.length; i++) {
-            const li = document.createElement("li");
-            li.textContent = cv.Lingue[i];
-            ulLang.appendChild(li);
-          }
-          sectionLang.appendChild(ulLang);
-          content.appendChild(sectionLang);
+    <script>
+        function caricaCV(cvFile) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', cvFile, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    try {
+                        var cvData = JSON.parse(xhr.responseText);
+                        mostraCV(cvData);
+                    } catch (error) {
+                        console.error("Errore nel parsing del CV JSON:", error);
+                        alert("Errore nel formato del file JSON.");
+                    }
+                } else {
+                    console.error("Errore nel caricamento del CV. Status:", xhr.status);
+                    alert("Non è stato possibile caricare il CV.");
+                }
+            };
+            xhr.onerror = function() {
+                console.error("Errore di rete durante il caricamento del CV.");
+                alert("Errore di rete durante il caricamento del CV.");
+            };
+            xhr.send();
         }
-      };
-      xhr.onerror = function () {
-        console.error("Errore durante il caricamento del CV.");
-      };
-      xhr.send();
-    } else {
-      document.getElementById("cvContent").innerHTML = "<p>Impossibile caricare il CV.</p>";
-    }
-  </script>
+    function mostraCV(cvData) {
+            const cvContent = document.getElementById('cv-content');
+            var htmlContent = '';
+htmlContent += '<header><h1>' + cvData.Nome + '</h1><p>Email: ' + cvData.Email + '</p><p>Età: ' + cvData.Eta + '</p></header>';
+
+
+htmlContent += '<section><h2>Istruzione</h2><ul>';
+
+    htmlContent += '<li>' + cvData.Titolo + ' presso ' + cvData.Universita + '</li>';
+
+htmlContent += '</ul></section>';
+
+
+htmlContent += '<section><h2>Lingue</h2><ul>';
+    htmlContent += '<li>' + cvData.Lingua + '</li>';
+
+htmlContent += '</ul></section>';
+
+cvContent.innerHTML = htmlContent;
+        }
+     
+
+        const cvFile = localStorage.getItem('cvFile');
+        if (cvFile) {
+            caricaCV(cvFile);
+        } else {
+            alert('CV non trovato');
+        }
+    </script>
 </body>
 </html>
