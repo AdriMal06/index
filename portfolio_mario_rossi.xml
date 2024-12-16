@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <portfolio>
-  <lavoro>
-    <titolo>Sviluppo Piattaforma E-commerce</titolo>
-    <descrizione>Sviluppo di una piattaforma e-commerce completa per la vendita di prodotti online, inclusi il sistema di gestione ordini e pagamenti.</descrizione>
-    <link>https://www.example.com/ecommerce</link>
-  </lavoro>
-  <lavoro>
-    <titolo>Applicazione Mobile Finanze Personali</titolo>
-    <descrizione>Creazione di un'applicazione mobile per la gestione delle finanze personali, che consente di monitorare spese e budget mensili.</descrizione>
-    <link>https://www.example.com/app</link>
-  </lavoro>
-  <lavoro>
-    <titolo>Redesign Sito Web Aziendale</titolo>
-    <descrizione>Redesign completo del sito web aziendale, con focus sull'ottimizzazione per dispositivi mobili e miglioramento dell'esperienza utente (UX).</descrizione>
-    <link>https://www.example.com/redesign</link>
-  </lavoro>
+    <candidato>
+        <nome>Mario Rossi</nome>
+        <ruolo>Sviluppatore Software</ruolo>
+        <bio>Sviluppatore full-stack con esperienza in JavaScript, Python, e tecnologie backend.</bio>
+        <lavori>
+            <lavoro>
+                <titolo>Sviluppo Software per Saep</titolo>
+                <descrizione>Progettazione e sviluppo di software per migliorare i servizi aziendali.</descrizione>
+                <anno>2023</anno>
+                <link>https://www.saep.it/servizi/sviluppo-software/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Progettazione Siti Web per B-PlanNow</titolo>
+                <descrizione>Fasi per la realizzazione di un sito web dinamico e responsive per clienti aziendali.</descrizione>
+                <anno>2022</anno>
+                <link>https://b-plannow.com/progettazione-siti-web-le-fasi-per-la-realizzazione-passo-passo/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Consulting per Digital Marketing</titolo>
+                <descrizione>Consulenza strategica per PMI in ambito digital marketing e SEO.</descrizione>
+                <anno>2021</anno>
+                <link>https://www.digitalmarketingconsulting.io/</link>
+            </lavoro>
+        </lavori>
+    </candidato>
 </portfolio>
