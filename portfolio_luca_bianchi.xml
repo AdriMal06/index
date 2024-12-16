@@ -1,18 +1,29 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <portfolio>
-  <lavoro>
-    <titolo>Progetto Software Gestione Magazzino</titolo>
-    <descrizione>Sviluppo di un software per la gestione del magazzino, inclusi la gestione inventario, ordini e reportistica avanzata.</descrizione>
-    <link>https://www.example.com/magazzino</link>
-  </lavoro>
-  <lavoro>
-    <titolo>Web App per Monitoraggio Progetti</titolo>
-    <descrizione>Creazione di una web app per il monitoraggio dei progetti aziendali, con funzionalità di assegnazione compiti e scadenze.</descrizione>
-    <link>https://www.example.com/webapp</link>
-  </lavoro>
-  <lavoro>
-    <titolo>Automazione Processo di Fatturazione</titolo>
-    <descrizione>Implementazione di un sistema automatizzato per la generazione e l'invio di fatture ai clienti, con integrazione con sistemi di pagamento online.</descrizione>
-    <link>https://www.example.com/fatturazione</link>
-  </lavoro>
+    <candidato>
+        <nome>Luca Bianchi</nome>
+        <ruolo>Sviluppatore Software</ruolo>
+        <bio>Sviluppatore full-stack con esperienza in JavaScript, Python, e tecnologie backend.</bio>
+        <lavori>
+            <lavoro>
+                <titolo>Sviluppo eCommerce per Clienti Retail</titolo>
+                <descrizione>Progettazione e sviluppo di un'applicazione e-commerce per un cliente retail.</descrizione>
+                <anno>2023</anno>
+                <link>https://www.moz.com/blog/what-is-ecommerce/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Realizzazione di Applicazioni Mobile</titolo>
+                <descrizione>Sviluppo di app mobile per aziende con particolare attenzione all'usabilità.</descrizione>
+                <anno>2022</anno>
+                <link>https://www.upwork.com/hire/mobile-app-developers/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Progettazione di Sistemi Cloud</titolo>
+                <descrizione>Progettazione e implementazione di soluzioni cloud personalizzate per piccole e medie imprese.</descrizione>
+                <anno>2021</anno>
+                <link>https://www.digitalocean.com/</link>
+            </lavoro>
+        </lavori>
+    </candidato>
 </portfolio>
