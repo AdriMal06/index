@@ -72,7 +72,7 @@
 
                     var cell1 = row.insertCell(0);
                     var img = document.createElement("img");
-                    img.src = data[i].link;
+                    img.src = data[i].Foto;
                     img.width = 50;
                     img.height = 50;
                     cell1.appendChild(img);
@@ -83,7 +83,7 @@
                     row.insertCell(4).textContent = data[i].Indirizzo;
                     row.insertCell(5).textContent = data[i].Citta;
 
-                    var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.cellulare}`;
+                    var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
                     
                     var cvLink = document.createElement("a");
@@ -91,7 +91,7 @@
                 cvLink.href = "cv.html";
                 cvLink.onclick = (function(index) {
                     return function() {
-                        localStorage.setItem("cvFile", data[index].link);
+                        localStorage.setItem("cvFile", data[index].CV);
                     };
                 })(i); 
                 row.insertCell(7).appendChild(cvLink);
@@ -102,7 +102,7 @@
                     portfolioIcon.style.cursor = "pointer";
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            localStorage.setItem("portfolioFile", data[index].port);
+                            localStorage.setItem("portfolioFile", data[index].Portfolio);
                             window.location.href = "portfolio.html"; 
                         };
                     }(i);
@@ -112,5 +112,3 @@
         };
         xhr.send();
     </script>
-</body>
-</html>
