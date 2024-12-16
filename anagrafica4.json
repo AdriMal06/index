@@ -1,34 +1,32 @@
 [
   {
+    "Foto": "img1.jpg",
     "Nome": "Mario",
     "Cognome": "Rossi",
-    "Eta": 35,
-    "Indirizzo": "Via Roma 10",
+    "Eta": 30,
+    "Indirizzo": "Via Roma 1",
     "Citta": "Milano",
-    "Telefono":{
-      "casa":1982765216,
-      "ufficio":716527326,
-      "cellulare":1526765345627
+    "Telefono": {
+      "casa": "0123456789",
+      "ufficio": "0234567890",
+      "privato": "3456789012"
     },
-    "link": "img1.jpg",
-    "port": "img1.jpg",
-    "cv": "cv_mario_rossi.json",
-    "prt": "portfolio_mario_rossi.xml"
+    "CV": "cv_mario_rossi.json",
+    "Portfolio": "portfolio_mario_rossi.xml"
   },
   {
+    "Foto": "img2.jpg",
     "Nome": "Luca",
     "Cognome": "Bianchi",
     "Eta": 28,
-    "Indirizzo": "Via Verdi 15",
+    "Indirizzo": "Via Milano 2",
     "Citta": "Roma",
-    "Telefono":{
-      "casa":1982765216,
-      "ufficio":716527326,
-      "cellulare":1526765345627
+    "Telefono": {
+      "casa": "0123456789",
+      "ufficio": "0234567890",
+      "privato": "3456789012"
     },
-    "link": "img2.jpg",
-    "port": "img2.jpg",
-    "cv": "cv_luca_bianchi.json",
-    "prt": "portfolio_luca_bianchi.xml"
+    "CV": "cv_luca_bianchi.json",
+    "Portfolio": "portfolio_luca_binachi.xml"
   }
 ]
