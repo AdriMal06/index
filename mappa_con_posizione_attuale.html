@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappa con posizione attuale</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="mappa" style="height: 500px;"></div>
+
+    <script>
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (posizione) {
+                var latitudine = posizione.coords.latitude;
+                var longitudine = posizione.coords.longitude;
+
+                var mappa = L.map('mappa').setView([latitudine, longitudine], 13);
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(mappa);
+
+                L.marker([latitudine, longitudine]).addTo(mappa)
+                    .bindPopup("Sei qui!")
+                    .openPopup();
+            }, function (errore) {
+                console.error("Errore nella geolocalizzazione: ", errore);
+            });
+        } else {
+            console.error("Geolocalizzazione non supportata dal browser.");
+        }
+    </script>
+</body>
+</html>
