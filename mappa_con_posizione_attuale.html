@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mappa con posizione attuale</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <title>Posizione e Mappa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 350px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div id="mappa" style="height: 500px;"></div>
+
+    <h1>La tua Posizione sulla Mappa</h1>
+    <div id="map"></div>
 
     <script>
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (posizione) {
-                var latitudine = posizione.coords.latitude;
-                var longitudine = posizione.coords.longitude;
-
-                var mappa = L.map('mappa').setView([latitudine, longitudine], 13);
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors'
-                }).addTo(mappa);
-
-                L.marker([latitudine, longitudine]).addTo(mappa)
-                    .bindPopup("Sei qui!")
-                    .openPopup();
-            }, function (errore) {
-                console.error("Errore nella geolocalizzazione: ", errore);
+        function initMap(lat, lng) {
+            const map = L.map('map').setView([lat, lng], 13);  // Posizione dell'utente
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([lat, lng]).addTo(map)
+                .bindPopup('Sei qui!')
+                .openPopup();
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                initMap(lat, lng);
+            }, function() {
+                alert('Impossibile ottenere la posizione.');
             });
         } else {
-            console.error("Geolocalizzazione non supportata dal browser.");
+            alert('Geolocalizzazione non supportata dal browser.');
         }
     </script>
+
 </body>
 </html>
